@@ -6,11 +6,11 @@ import {Helmet} from "react-helmet";
 export default class Layout extends React.Component {
 	render() {
 		return (
-			<div>
+			<React.Fragment>
 				<Header />
 				{this.props.children}
 				<Footer />
-			</div>
+			</React.Fragment>
 		)
 	}
 }

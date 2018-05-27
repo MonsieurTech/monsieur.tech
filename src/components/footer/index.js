@@ -19,20 +19,35 @@ import {
 import logoImg from './logo.png'
 
 export default class Footer extends React.Component {
-	componentDidMount() {
-		$(function($) {
-			$('.transparent.clearfix').css('height', $('footer.clearfix').outerHeight() + 'px')
-		})
-		
-		$(window).on('resize', function () {
-			$('.transparent.clearfix').css('height', $('footer.clearfix').outerHeight() + 'px')
-		})
+	constructor(props) {
+		super(props);
+		this.footerRef = React.createRef();
+		this.transparentRef = React.createRef();
 	}
+	componentDidMount() {
+		window.addEventListener('resize', this.updateDimensions);
+		
+		this.requestUpdateDimensions();
+	}
+	componentDidUpdate() {
+		this.requestUpdateDimensions();
+	}
+	requestUpdateDimensions() {
+		if(window.requestAnimationFrame) {
+			requestAnimationFrame(() => requestAnimationFrame(() => this.updateDimensions()));
+		}
+		else {
+			setTimeout(() => this.updateDimensions(), 16);
+		}
+	}
+	updateDimensions() {
+		$(this.transparentRef.current).css('height', $(this.footerRef.current).outerHeight() + 'px')
+    }
 	render() {
 		return (
-			<div>
-				<div className="transparent clearfix" />
-				<footer className="clearfix">
+			<React.Fragment>
+				<div ref={this.transparentRef} className="transparent clearfix" />
+				<footer className="clearfix" ref={this.footerRef}>
 					<Navbar dark expand="md">
 						<Container className="flex-column navbar-text">
 							<img src={logoImg} className="brand"/>
@@ -48,17 +63,17 @@ export default class Footer extends React.Component {
 									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink href="https://github.com/daiyam/"  target="_blank">
+									<NavLink href="https://github.com/daiyam/" target="_blank">
 										<FontAwesomeIcon icon={faGithub} />
 									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink href="https://twitter.com/baptisteaugrain/"  target="_blank">
+									<NavLink href="https://twitter.com/baptisteaugrain/" target="_blank">
 										<FontAwesomeIcon icon={faTwitter} />
 									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink href="https://www.linkedin.com/in/baptiste-augrain/"  target="_blank">
+									<NavLink href="https://www.linkedin.com/in/baptiste-augrain/" target="_blank">
 										<FontAwesomeIcon icon={faLinkedin} />
 									</NavLink>
 								</NavItem>
@@ -66,7 +81,7 @@ export default class Footer extends React.Component {
 						</Container>
 					</Navbar>
 				</footer>
-			</div>
+			</React.Fragment>
 		)
 	}
 }
