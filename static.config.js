@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default {
-	siteRoot: 'https://www.monsieur.tech',
 	getSiteData: () => ({
 		title: 'M.TECH',
 		author: 'Baptiste Augrain',
