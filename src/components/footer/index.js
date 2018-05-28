@@ -45,9 +45,11 @@ export default class Footer extends React.Component {
 		}
 	}
 	updateDimensions() {
-		this.setState({
-			height: this.footerRef.current.clientHeight
-		});
+		if(this.footerRef.current) {
+			this.setState({
+				height: this.footerRef.current.clientHeight
+			});
+		}
     }
 	render() {
 		return (
