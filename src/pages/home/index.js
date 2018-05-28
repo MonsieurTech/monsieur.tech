@@ -21,54 +21,9 @@ const P = styled.p`
 import slideImg from './P4265941.jpg'
 
 export default class Page extends React.Component {
-	componentDidMount() {
-		/* $(function($) {
-			var options = {
-				autoplay: true,
-				dots: false,
-				autoplay: true,
-				nextArrow: '<i class="fa fa-long-arrow-right"></i>',
-				prevArrow: '<i class="fa fa-long-arrow-left"></i>',
-				speed: 800,
-				fade: true,
-				pauseOnHover: false,
-				pauseOnFocus: false
-			}
-			$('.home-slider').slick(options);
-			
-			$('.slider-img-bg').each(function() {
-				var t = $(this)
-				t.css('background-image', "url('" + t.data('background') + "') ")
-			});
-		}) */
-	}
 	render() {
 		return (
 			<Layout>
-				{/* <div className="home-slider ani-slider slider" data-slick="{&quot;autoplaySpeed&quot;: 8000}" id="home">
-					<div className="slide" data-slick-index="0" aria-hidden="false" tabIndex="0">
-						<div className="slider-mask"></div>
-						<div className="slider-img-bg" data-background={slideImg}></div>
-						<div className="slider-box container-fluid">
-							<div className="slider-content">
-								<div className="slider-hidden">
-									<H3 className="slider-title" animation={fadeInUp} delay="0.8s">
-										Bienvenue sur <span className="archive">M.TECH</span> !
-									</H3>
-									<P className="slider-subtitle" animation={fadeInUp} delay="1s">Votre Solutionneur Informatique</P>
-								</div>
-								<DIV className="slider-line" animation={zoomIn} delay="0.6s"></DIV>
-								<P className="slider-text" animation={fadeInUp} delay="1.3s">
-									Que vous soyez une entreprise ou un particulier,
-									<br />
-									que vous ayez un problème, une question ou un projet,
-									<br />
-									je suis là pour vous aider et trouver une solution.
-								</P>
-							</div>
-						</div>
-					</div>
-				</div> */}
 				<Carousel showArrows={false} showStatus={false} showIndicators={false} showThumbs={false}>
 					<div className="slide">
 						<div className="slider-img-bg" style={{backgroundImage: `url(${slideImg})`}}></div>

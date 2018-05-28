@@ -48,6 +48,7 @@
   color: #fff;
   font-size: 4rem;
   margin: 0 0 30px;
+  white-space: nowrap;
   
   @media (max-width:992px) {
     font-size: 2.8rem;
@@ -56,7 +57,7 @@
 
 .slider-subtitle {
   font-size: 2rem;
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: 800;
   
   @media (max-width: 600px) {
