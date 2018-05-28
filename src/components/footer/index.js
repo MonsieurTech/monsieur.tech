@@ -33,8 +33,8 @@ export default class Footer extends React.Component {
 		
 		this.requestUpdateDimensions();
 	}
-	componentDidUpdate() {
-		this.requestUpdateDimensions();
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.updateDimensions);
 	}
 	requestUpdateDimensions() {
 		if(window.requestAnimationFrame) {

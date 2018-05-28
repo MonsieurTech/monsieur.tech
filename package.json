@@ -10,7 +10,8 @@
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "deploy": "netlifyctl deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
