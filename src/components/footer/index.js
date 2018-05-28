@@ -21,8 +21,12 @@ import logoImg from './logo.png'
 export default class Footer extends React.Component {
 	constructor(props) {
 		super(props);
+		
 		this.footerRef = React.createRef();
-		this.transparentRef = React.createRef();
+		
+		this.state = {
+			height: 0
+		};
 	}
 	componentDidMount() {
 		window.addEventListener('resize', this.updateDimensions);
@@ -41,12 +45,14 @@ export default class Footer extends React.Component {
 		}
 	}
 	updateDimensions() {
-		$(this.transparentRef.current).css('height', $(this.footerRef.current).outerHeight() + 'px')
+		this.setState({
+			height: this.footerRef.current.clientHeight
+		});
     }
 	render() {
 		return (
 			<React.Fragment>
-				<div ref={this.transparentRef} className="transparent clearfix" />
+				<div className="transparent clearfix" style={{height: this.state.height}}/>
 				<footer className="clearfix" ref={this.footerRef}>
 					<Navbar dark expand="md">
 						<Container className="flex-column navbar-text">

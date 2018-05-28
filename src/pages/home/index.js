@@ -1,33 +1,28 @@
 import React from 'react'
 import Layout from '../../layouts/default'
+import fadeInUp from 'react-animations/lib/fade-in-up'
+import zoomIn from 'react-animations/lib/zoom-in'
+import styled, { keyframes } from 'styled-components';
+import { Carousel } from 'react-responsive-carousel';
+import { Row, Col } from 'reactstrap';
+
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+const DIV = styled.div`
+	animation: ${props => props.delay} ${props => keyframes`${props.animation}`};
+`;
+const H3 = styled.h3`
+	animation: ${props => props.delay} ${props => keyframes`${props.animation}`};
+`;
+const P = styled.p`
+	animation: ${props => props.delay} ${props => keyframes`${props.animation}`};
+`;
 
 import slideImg from './P4265941.jpg'
 
 export default class Page extends React.Component {
 	componentDidMount() {
-		function doAnimations(elements) {
-			var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-			
-			elements.each(function() {
-				var $this = $(this);
-				var $animationDelay = $this.data('delay');
-				var $animationDuration = $this.data('duration');
-				var $animationType = 'animated ' + $this.data('animation');
-				
-				$this.css({
-					'animation-delay': $animationDelay,
-					'-webkit-animation-delay': $animationDelay,
-					'-webkit-animation-duration': $animationDuration,
-					'animation-duration': $animationDuration,
-				});
-				
-				$this.addClass($animationType).one(animationEndEvents, function() {
-					$this.removeClass($animationType);
-				});
-			});
-		}
-		
-		$(function($) {
+		/* $(function($) {
 			var options = {
 				autoplay: true,
 				dots: false,
@@ -45,39 +40,61 @@ export default class Page extends React.Component {
 				var t = $(this)
 				t.css('background-image', "url('" + t.data('background') + "') ")
 			});
-			
-			doAnimations($('div.slide').find('[data-animation]'))
-		})
+		}) */
 	}
 	render() {
 		return (
 			<Layout>
-				<div className="home-slider ani-slider slider" data-slick="{&quot;autoplaySpeed&quot;: 8000}" id="home">
+				{/* <div className="home-slider ani-slider slider" data-slick="{&quot;autoplaySpeed&quot;: 8000}" id="home">
 					<div className="slide" data-slick-index="0" aria-hidden="false" tabIndex="0">
-						<div className="slider-mask" data-animation="slideUpReturn" data-delay="0.1s"></div>
-						<div className="slider-img-bg" data-animation="puffIn" data-animation-duration="0.7s" data-background={slideImg} data-delay="0.2s" data-stellar-ratio="0.8"></div>
+						<div className="slider-mask"></div>
+						<div className="slider-img-bg" data-background={slideImg}></div>
 						<div className="slider-box container-fluid">
 							<div className="slider-content">
 								<div className="slider-hidden">
-									<h3 className="slider-title" data-animation="fadeInUp" data-delay="0.8s">
+									<H3 className="slider-title" animation={fadeInUp} delay="0.8s">
 										Bienvenue sur <span className="archive">M.TECH</span> !
-									</h3>
-									<p className="slider-subtitle" data-animation="fadeInUp" data-delay="1s">Votre Solutionneur Informatique</p>
+									</H3>
+									<P className="slider-subtitle" animation={fadeInUp} delay="1s">Votre Solutionneur Informatique</P>
 								</div>
-								<div className="slider-line" data-animation="zoomIn" data-delay="0.6s"></div>
-								<p className="slider-text" data-animation="fadeInUp" data-delay="1.3s">
+								<DIV className="slider-line" animation={zoomIn} delay="0.6s"></DIV>
+								<P className="slider-text" animation={fadeInUp} delay="1.3s">
 									Que vous soyez une entreprise ou un particulier,
 									<br />
 									que vous ayez un problème, une question ou un projet,
 									<br />
 									je suis là pour vous aider et trouver une solution.
-								</p>
+								</P>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className="table-box clearfix row" id="contact">
-					<div className="table-cell-box table-content gray-bg col-lg-6">
+				</div> */}
+				<Carousel showArrows={false} showStatus={false} showIndicators={false} showThumbs={false}>
+					<div className="slide">
+						<div className="slider-img-bg" style={{backgroundImage: `url(${slideImg})`}}></div>
+						<div className="slider-mask"></div>
+						<div className="slider-box container-fluid">
+							<div className="slider-content">
+								<div className="slider-hidden">
+									<H3 className="slider-title" animation={fadeInUp} delay="0.8s">
+										Bienvenue sur <span className="font-archive">M.TECH</span> !
+									</H3>
+									<P className="slider-subtitle" animation={fadeInUp} delay="1s">Votre Solutionneur Informatique</P>
+								</div>
+								<DIV className="slider-line" animation={zoomIn} delay="0.6s"></DIV>
+								<P className="slider-text" animation={fadeInUp} delay="1.3s">
+									Que vous soyez une entreprise ou un particulier,
+									<br />
+									que vous ayez un problème, une question ou un projet,
+									<br />
+									je suis là pour vous aider et trouver une solution.
+								</P>
+							</div>
+						</div>
+					</div>
+				</Carousel>
+				<Row className="table-box" id="contact">
+					<Col lg={6} className="gray-bg">
 						<h3>Prenez Contact</h3>
 						<div className="cell-line"></div>
 						<p>
@@ -85,8 +102,8 @@ export default class Page extends React.Component {
 							<br />
 							Contactez moi ! Je serai ravi de vous répondre et aider.
 						</p>
-					</div>
-					<div className="table-cell-box table-content col-lg-6">
+					</Col>
+					<Col lg={6}>
 						<form action="https://formspree.io/baptiste@monsieur.tech" method="POST" target="_blank">
 							<input name="_subject" type="hidden" value="[monsieur.tech] Nouveau Message" />
 							<input name="_language" type="hidden" value="fr" />
@@ -98,8 +115,8 @@ export default class Page extends React.Component {
 							</div>
 							<button className="btn btn-primary" type="submit">Envoyer Votre Message</button>
 						</form>
-					</div>
-				</div>
+					</Col>
+				</Row>
 			</Layout>
 		)
 	}

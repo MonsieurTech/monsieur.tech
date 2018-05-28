@@ -1,0 +1,33 @@
+header {
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  padding-top: 60px;
+  top: 0;
+  left: 0;
+  
+  nav {
+    background-color: rgba(#1e2326, 0.5) !important;
+    font-size: 1.3rem;
+    
+    .navbar-collapse.collapsing,
+    .navbar-collapse.show {
+      ul.social {
+        flex-direction: row;
+        place-content: space-around;
+        
+        .nav-link {
+          display: inline-block;
+          padding: .5rem 1rem;
+          font-family: 'Montserrat', sans-serif;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  header nav {
+    background-color: rgba(#1e2326, 0.8) !important;
+  }
+}

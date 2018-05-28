@@ -18,6 +18,8 @@ import {
 	NavLink
 } from 'reactstrap';
 
+import Sticky from 'react-stickynode';
+
 import logoImg from './logo.png'
 
 export default class Header extends React.Component {
@@ -29,13 +31,6 @@ export default class Header extends React.Component {
 			isOpen: false
 		};
 	}
-	componentDidMount() {
-		$(function($) {
-			$('header .for-sticky').sticky({
-				topSpacing: 0
-			});
-		});
-	}
 	toggle() {
 		this.setState({
 			isOpen: !this.state.isOpen
@@ -44,7 +39,7 @@ export default class Header extends React.Component {
 	render() {
 		return (
 			<header>
-				<div className="for-sticky">
+				<Sticky>
 					<Navbar dark expand="md">
 						<Container>
 							<NavbarBrand href="/"><img src={logoImg} /></NavbarBrand>
@@ -85,7 +80,7 @@ export default class Header extends React.Component {
 							</Collapse>
 						</Container>
 					</Navbar>
-				</div>
+				</Sticky>
 			</header>
 		)
 	}

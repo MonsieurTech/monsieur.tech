@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Arimo:400,700);
+
+@font-face {
+    font-family: 'Archive';
+    src:url('/fonts/Archive.ttf.woff') format('woff'),
+        url('/fonts/Archive.ttf.svg#Archive') format('svg'),
+        url('/fonts/Archive.ttf.eot'),
+        url('/fonts/Archive.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-archive {
+  font-family: 'Archive';
+}
