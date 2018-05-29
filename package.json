@@ -18,22 +18,19 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "^0.0.20",
-    "bootstrap": "^4.1.1",
+    "antd": "^3.5.4",
     "react": "^16.0.0",
     "react-animations": "^1.0.0",
     "react-dom": "^16.0.0",
-    "react-responsive-carousel": "^3.1.39",
     "react-router": "^4.2.0",
     "react-static": "^5.9.5",
-    "react-stickynode": "^2.0.0",
-    "reactstrap": "^6.0.1",
     "styled-components": "^3.3.0"
   },
   "devDependencies": {
     "eslint-config-react-tools": "1.x.x",
     "extract-text-webpack-plugin": "^3.0.2",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
     "serve": "^6.1.0"
   }
 }

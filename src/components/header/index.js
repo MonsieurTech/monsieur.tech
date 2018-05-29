@@ -7,20 +7,9 @@ import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
 import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
 import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 
-import {
-	Collapse,
-	Container,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink
-} from 'reactstrap';
-
-import Sticky from 'react-stickynode';
-
 import logoImg from './logo.png'
+
+import { Affix, Menu } from 'antd'
 
 export default class Header extends React.Component {
 	constructor(props) {
@@ -39,8 +28,15 @@ export default class Header extends React.Component {
 	render() {
 		return (
 			<header>
-				<Sticky>
-					<Navbar dark expand="md">
+				<Affix>
+					<a href="/"><img src={logoImg} /></a>
+					
+					<Menu mode="horizontal">
+						<Menu.Item>
+							<a href="#home">Accueil</a>
+						</Menu.Item>
+					</Menu>
+					{/* <Navbar dark expand="md">
 						<Container>
 							<NavbarBrand href="/"><img src={logoImg} /></NavbarBrand>
 							
@@ -79,8 +75,8 @@ export default class Header extends React.Component {
 								</Nav>
 							</Collapse>
 						</Container>
-					</Navbar>
-				</Sticky>
+					</Navbar> */}
+				</Affix>
 			</header>
 		)
 	}

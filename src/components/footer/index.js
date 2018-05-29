@@ -8,14 +8,6 @@ import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
 import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
 import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 
-import {
-	Container,
-	Navbar,
-	Nav,
-	NavItem,
-	NavLink
-} from 'reactstrap';
-
 import logoImg from './logo.png'
 
 export default class Footer extends React.Component {
@@ -28,14 +20,14 @@ export default class Footer extends React.Component {
 			height: 0
 		};
 	}
-	componentDidMount() {
+	/* componentDidMount() {
 		window.addEventListener('resize', this.updateDimensions);
 		
 		this.requestUpdateDimensions();
 	}
 	componentWillUnmount() {
 		window.removeEventListener('resize', this.updateDimensions);
-	}
+	} */
 	requestUpdateDimensions() {
 		if(window.requestAnimationFrame) {
 			requestAnimationFrame(() => requestAnimationFrame(() => this.updateDimensions()));
@@ -56,7 +48,7 @@ export default class Footer extends React.Component {
 			<React.Fragment>
 				<div className="transparent clearfix" style={{height: this.state.height}}/>
 				<footer className="clearfix" ref={this.footerRef}>
-					<Navbar dark expand="md">
+					{/* <Navbar dark expand="md">
 						<Container className="flex-column navbar-text">
 							<img src={logoImg} className="brand"/>
 							
@@ -87,7 +79,7 @@ export default class Footer extends React.Component {
 								</NavItem>
 							</ul>
 						</Container>
-					</Navbar>
+					</Navbar> */}
 				</footer>
 			</React.Fragment>
 		)

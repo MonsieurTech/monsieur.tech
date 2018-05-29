@@ -3,10 +3,6 @@ import Layout from '../../layouts/default'
 import fadeInUp from 'react-animations/lib/fade-in-up'
 import zoomIn from 'react-animations/lib/zoom-in'
 import styled, { keyframes } from 'styled-components';
-import { Carousel } from 'react-responsive-carousel';
-import { Row, Col } from 'reactstrap';
-
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const DIV = styled.div`
 	animation: ${props => props.delay} ${props => keyframes`${props.animation}`};
@@ -24,7 +20,7 @@ export default class Page extends React.Component {
 	render() {
 		return (
 			<Layout>
-				<Carousel showArrows={false} showStatus={false} showIndicators={false} showThumbs={false}>
+				{/* <Carousel showArrows={false} showStatus={false} showIndicators={false} showThumbs={false}>
 					<div className="slide">
 						<div className="slider-img-bg" style={{backgroundImage: `url(${slideImg})`}}></div>
 						<div className="slider-mask"></div>
@@ -71,7 +67,7 @@ export default class Page extends React.Component {
 							<button className="btn btn-primary" type="submit">Envoyer Votre Message</button>
 						</form>
 					</Col>
-				</Row>
+				</Row> */}
 			</Layout>
 		)
 	}

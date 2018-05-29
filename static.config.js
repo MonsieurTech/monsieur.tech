@@ -38,7 +38,10 @@ export default {
 					loader: 'css-loader'
 				},
 				{
-					loader: 'sass-loader'
+					loader: 'less-loader',
+					options: {
+						javascriptEnabled: true
+					}
 				}
 			]
 		}
@@ -53,9 +56,10 @@ export default {
 					}
 				},
 				{
-					loader: 'sass-loader',
+					loader: 'less-loader',
 					options: {
-						includePaths: ['src/']
+						includePaths: ['src/'],
+						javascriptEnabled: true
 					}
 				}
 			]
@@ -79,7 +83,7 @@ export default {
 			{
 				oneOf: [
 					{
-						test: /\.s(a|c)ss$/,
+						test: /\.less$/,
 						use: loaders
 					},
 					defaultLoaders.cssLoader,

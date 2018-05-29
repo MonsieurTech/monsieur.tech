@@ -3,7 +3,7 @@ import { Router, Link } from 'react-static'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
 
-import './styles/main.scss'
+import './styles/main.less'
 
 class App extends React.Component {
 	render() {
