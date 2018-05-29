@@ -1,3 +1,4 @@
+import path from 'path'
 import React, { Component } from 'react'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { ServerStyleSheet } from 'styled-components'
@@ -38,7 +39,7 @@ export default {
 					loader: 'css-loader'
 				},
 				{
-					loader: 'sass-loader'
+					loader: 'less-loader'
 				}
 			]
 		}
@@ -53,7 +54,7 @@ export default {
 					}
 				},
 				{
-					loader: 'sass-loader',
+					loader: 'less-loader',
 					options: {
 						includePaths: ['src/']
 					}
@@ -79,15 +80,48 @@ export default {
 			{
 				oneOf: [
 					{
-						test: /\.s(a|c)ss$/,
+						test: /\.less$/,
 						use: loaders
+					},
+					{
+						test: /\.s(a|c)ss$/,
+						use: [
+							{
+								loader: 'style-loader'
+							},
+							{
+								loader: 'css-loader'
+							},
+							{
+								loader: 'sass-loader'
+							}
+						]
+					},
+					{
+						test: /\.jsx?$/,
+						loader: 'semantic-ui-react-less-loader',
+						include: [/node_modules[\/\\]semantic-ui-react/]
 					},
 					defaultLoaders.cssLoader,
 					defaultLoaders.jsLoader,
-					defaultLoaders.fileLoader
+					{
+						test: /\.jpe?g$|\.gif$|\.ico$|\.png$|\.svg$/,
+						use: 'file-loader?name=[name].[ext]?[hash]'
+					},
+					{
+						test: /\.woff2?$/,
+						loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+					},
+					{
+						test: /\.(ttf|eot)$/,
+						loader: 'file-loader'
+					},
 				]
 			}
 		]
+		config.resolve.alias = {
+			'../../theme.config$': path.join(__dirname, 'src/styles/semantic/theme.config')
+		}
 		
 		return config
 	},

@@ -8,17 +8,11 @@ import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
 import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 
 import {
-	Collapse,
 	Container,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink
-} from 'reactstrap';
-
-import Sticky from 'react-stickynode';
+	Image,
+	Menu,
+	Visibility,
+} from 'semantic-ui-react'
 
 import logoImg from './logo.png'
 
@@ -26,10 +20,19 @@ export default class Header extends React.Component {
 	constructor(props) {
 		super(props);
 	
-		this.toggle = this.toggle.bind(this);
 		this.state = {
-			isOpen: false
+			menuFixed: false
 		};
+	}
+	stickTopMenu() {
+		return this.setState({
+				menuFixed: true
+		})
+	}
+	unStickTopMenu() {
+		this.setState({
+			menuFixed: false
+		})
 	}
 	toggle() {
 		this.setState({
@@ -37,9 +40,11 @@ export default class Header extends React.Component {
 		});
 	}
 	render() {
+		const { menuFixed } = this.state
+		
 		return (
 			<header>
-				<Sticky>
+				{/* <Sticky>
 					<Navbar dark expand="md">
 						<Container>
 							<NavbarBrand href="/"><img src={logoImg} /></NavbarBrand>
@@ -62,17 +67,17 @@ export default class Header extends React.Component {
 										</NavLink>
 									</NavItem>
 									<NavItem>
-										<NavLink href="https://github.com/daiyam/"  target="_blank">
+										<NavLink href="https://github.com/daiyam/"target="_blank">
 											<FontAwesomeIcon icon={faGithub} />
 										</NavLink>
 									</NavItem>
 									<NavItem>
-										<NavLink href="https://twitter.com/baptisteaugrain/"  target="_blank">
+										<NavLink href="https://twitter.com/baptisteaugrain/"target="_blank">
 											<FontAwesomeIcon icon={faTwitter} />
 										</NavLink>
 									</NavItem>
 									<NavItem>
-										<NavLink href="https://www.linkedin.com/in/baptiste-augrain/"  target="_blank">
+										<NavLink href="https://www.linkedin.com/in/baptiste-augrain/"target="_blank">
 											<FontAwesomeIcon icon={faLinkedin} />
 										</NavLink>
 									</NavItem>
@@ -80,7 +85,19 @@ export default class Header extends React.Component {
 							</Collapse>
 						</Container>
 					</Navbar>
-				</Sticky>
+				</Sticky> */}
+				<Visibility	onBottomPassed={this.stickTopMenu} onBottomVisible={this.unStickTopMenu} once={false}>
+					<Menu borderless fixed={menuFixed && 'top'}>
+						<Container text>
+							<Menu.Item as='a' href='/'>
+								<Image src={logoImg} />
+							</Menu.Item>
+							<Container textAlign='right'>
+								<Menu.Item as='a' href='#home'>Accueil</Menu.Item>
+							</Container>
+						</Container>
+					</Menu>
+				</Visibility>
 			</header>
 		)
 	}

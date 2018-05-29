@@ -1,0 +1,9 @@
+/*******************************
+	User Global Variables
+*******************************/
+
+@fontName: Arimo;
+@pageFont: @fontName, sans-serif;
+
+@textColor: #FFF;
+@pageBackground: #1E2326;
