@@ -32,7 +32,7 @@ export default class Page extends React.Component {
 							<div className="slider-content">
 								<div className="slider-hidden">
 									<H3 className="slider-title" animation={fadeInUp} delay="0.8s">
-										Bienvenue sur <span class="nowrap"><span className="font-archive">M.TECH</span> !</span>
+										Bienvenue sur <span className="nowrap"><span className="font-archive">M.TECH</span> !</span>
 									</H3>
 									<P className="slider-subtitle" animation={fadeInUp} delay="1s">Votre Solutionneur Informatique</P>
 								</div>
