@@ -1,0 +1,30 @@
+{
+	"search.exclude": {
+		"node_modules": true,
+		"coverage": true,
+		"dist": true,
+		"tmp": true,
+		".DS_Store": true,
+		".env.local": true,
+		".env.development.local": true,
+		".env.test.local": true,
+		".env.production.local": true,
+		"npm-debug.log*": true,
+		"yarn-debug.log*": true,
+		"yarn-error.log*": true
+	},
+	"files.exclude": {
+		"node_modules": true,
+		"coverage": true,
+		"dist": true,
+		"tmp": true,
+		".DS_Store": true,
+		".env.local": true,
+		".env.development.local": true,
+		".env.test.local": true,
+		".env.production.local": true,
+		"npm-debug.log*": true,
+		"yarn-debug.log*": true,
+		"yarn-error.log*": true
+	}
+}
