@@ -28,6 +28,22 @@ const P = styled.p`
 	animation: ${props => props.delay} ${props => keyframes`${props.animation}`};
 `
 
+function urlEncodeFormData(fd){
+	let s = ''
+	
+	function encode(s) {
+		return encodeURIComponent(s).replace(/%20/g, '+')
+	}
+	
+	for(let pair of fd.entries()) {
+		if(typeof pair[1] === 'string') {
+			s += (s ? '&' : '') + encode(pair[0]) + '=' + encode(pair[1])
+		}
+	}
+	
+	return s
+}
+
 export default class Page extends React.Component {
 	constructor(props) {
 		super(props)
@@ -45,15 +61,12 @@ export default class Page extends React.Component {
 			state: 'SUBMITTING'
 		})
 		
-		const data = new FormData(event.target)
-		data.append('form-name', event.target.getAttribute('form-name'))
-		
 		fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			body: data
+			body: urlEncodeFormData(new FormData(event.target))
 		})
 		.then(() => {
 			event.target.reset();
