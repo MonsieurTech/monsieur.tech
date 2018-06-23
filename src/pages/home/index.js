@@ -61,15 +61,17 @@ export default class Page extends React.Component {
 			state: 'SUBMITTING'
 		})
 		
+		const target = event.target
+		
 		fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			body: urlEncodeFormData(new FormData(event.target))
+			body: urlEncodeFormData(new FormData(target))
 		})
 		.then(() => {
-			event.target.reset();
+			target.reset()
 			
 			this.setState({
 				state: 'SUCCESS'
