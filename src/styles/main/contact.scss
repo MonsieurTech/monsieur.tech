@@ -19,5 +19,38 @@
     @media (max-width: 320px) {
       padding: .5rem 1.5em;
     }
+    
+    &.btn-success {
+      color: #fff;
+      opacity: 1;
+    }
   }
+  
+  .loader {
+    border: 2px solid $primary;
+    border-right: 2px solid #ffffff;
+    border-radius: 21px;
+    width: 42px;
+    height: 42px;
+    background: transparent;
+    animation: loader .7s linear infinite;
+  }
+  
+  .alert {
+      color: #333;
+      
+      .close {
+        opacity: 0.8;
+        outline: none;
+      }
+  }
+}
+
+@keyframes loader {
+	0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
 }

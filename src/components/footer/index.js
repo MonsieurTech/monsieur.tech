@@ -1,95 +1,83 @@
-import React from 'react'
-
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-
-import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
-import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
-import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
-import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
-
+import React, {Fragment} from 'react'
 import {
 	Container,
-	Navbar,
 	Nav,
+	Navbar,
 	NavItem,
 	NavLink
-} from 'reactstrap';
+} from 'reactstrap'
 
+//Icons
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
+import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin'
+import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
+import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
+import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
+
+//Images
 import logoImg from './logo.png'
 
 export default class Footer extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		
-		this.footerRef = React.createRef();
+		this.footerRef = React.createRef()
 		
 		this.state = {
 			height: 0
-		};
+		}
 	}
 	componentDidMount() {
-		window.addEventListener('resize', this.updateDimensions);
+		window.addEventListener('resize', this.updateDimensions)
 		
-		this.requestUpdateDimensions();
+		this.requestUpdateDimensions()
 	}
 	componentWillUnmount() {
-		window.removeEventListener('resize', this.updateDimensions);
+		window.removeEventListener('resize', this.updateDimensions)
 	}
 	requestUpdateDimensions() {
 		if(window.requestAnimationFrame) {
-			requestAnimationFrame(() => requestAnimationFrame(() => this.updateDimensions()));
+			requestAnimationFrame(() => requestAnimationFrame(() => this.updateDimensions()))
 		}
 		else {
-			setTimeout(() => this.updateDimensions(), 16);
+			setTimeout(() => this.updateDimensions(), 16)
 		}
 	}
 	updateDimensions() {
-		if(this.footerRef.current) {
+		let footer
+		if(this.footerRef && (footer = this.footerRef.current)) {
 			this.setState({
-				height: this.footerRef.current.clientHeight
-			});
+				height: footer.clientHeight
+			})
 		}
     }
 	render() {
-		return (
-			<React.Fragment>
-				<div className="transparent clearfix" style={{height: this.state.height}}/>
-				<footer className="clearfix" ref={this.footerRef}>
-					<Navbar dark expand="md">
-						<Container className="flex-column navbar-text">
-							<img src={logoImg} className="brand"/>
+		return pug`
+			Fragment
+				.transparent.clearfix(style={
+					height: this.state.height
+				})
+				footer.clearfix(ref=this.footerRef)
+					Navbar(dark expand='md')
+						Container.flex-column.navbar-text
+							img.brand(src=logoImg)
 							
-							<div className="copyright">
-								Made with <FontAwesomeIcon icon={faHeart} /> in France &copy;2018 <a href="/">monsieur.tech</a>
-							</div>
-							
-							<ul>
-								<NavItem>
-									<NavLink href="mailto:baptiste@monsieur.tech">
-										<FontAwesomeIcon icon={faEnvelope} />
-									</NavLink>
-								</NavItem>
-								<NavItem>
-									<NavLink href="https://github.com/daiyam/" target="_blank">
-										<FontAwesomeIcon icon={faGithub} />
-									</NavLink>
-								</NavItem>
-								<NavItem>
-									<NavLink href="https://twitter.com/baptisteaugrain/" target="_blank">
-										<FontAwesomeIcon icon={faTwitter} />
-									</NavLink>
-								</NavItem>
-								<NavItem>
-									<NavLink href="https://www.linkedin.com/in/baptiste-augrain/" target="_blank">
-										<FontAwesomeIcon icon={faLinkedin} />
-									</NavLink>
-								</NavItem>
-							</ul>
-						</Container>
-					</Navbar>
-				</footer>
-			</React.Fragment>
-		)
+							.copyright Made with #[FontAwesomeIcon(icon=faHeart)] in France ©2018 #[a(href='/') monsieur.tech]
+
+							ul
+								NavItem
+									NavLink(href='mailto:baptiste@monsieur.tech')
+										FontAwesomeIcon(icon=faEnvelope)
+								NavItem
+									NavLink(href='https://github.com/daiyam/' target='_blank')
+										FontAwesomeIcon(icon=faGithub)
+								NavItem
+									NavLink(href='https://twitter.com/baptisteaugrain/' target='_blank')
+										FontAwesomeIcon(icon=faTwitter)
+								NavItem
+									NavLink(href='https://www.linkedin.com/in/baptiste-augrain/' target='_blank')
+										FontAwesomeIcon(icon=faLinkedin)
+		`
 	}
 }

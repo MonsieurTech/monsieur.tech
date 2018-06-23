@@ -20,6 +20,7 @@ $input-color: #fff;
 $input-focus-border-color: lighten($input-bg, 25%) !default;
 $input-focus-box-shadow: none;
 
+$btn-focus-width: 0;
 $btn-padding-y: 0.5rem;
 $btn-padding-x: 2.5em;
 
@@ -79,4 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .nowrap {
 	white-space: nowrap;
+}
+
+.e404 {
+	padding-top: 200px;
+    padding-bottom: 60px;
+	background: #1A1A1A;
 }
