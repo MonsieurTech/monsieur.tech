@@ -4,3 +4,7 @@
 [build]
 	publish = "dist"
 	command = "yarn build"
+
+[build.environment]
+	GIT_LFS_ENABLED = true
+	GIT_LFS_FETCH_INCLUDE = "*.eot,*.gif,*.jpg,*.pdf,*.png,*.svg,*.woff"
