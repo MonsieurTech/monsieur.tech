@@ -63,23 +63,28 @@ export default class Page extends React.Component {
 		
 		const target = event.target
 		
-		fetch('/', {
+		fetch(target.action, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
 			body: urlEncodeFormData(new FormData(target))
 		})
-		.then(() => {
-			target.reset()
-			
-			this.setState({
-				state: 'SUCCESS'
-			})
+		.then(response => {
+			if(response.ok) {
+				target.reset()
+				
+				this.setState({
+					state: 'SUCCESS'
+				})
+			}
+			else {
+				this.setState({
+					state: 'ERROR'
+				})
+			}
 		})
 		.catch(error => {
-			console.log(error)
-			
 			this.setState({
 				state: 'ERROR'
 			})
@@ -119,13 +124,10 @@ export default class Page extends React.Component {
 							| Contactez moi ! Je serai ravi de vous répondre et aider.
 					Col(lg=6)
 						form(
+							action='/.netlify/functions/contact'
 							method='POST'
-							name='contact'
-							data-netlify='true'
-							data-netlify-honeypot='bot-field'
 							onSubmit=this.handleSubmit
 						)
-							Input(type='hidden' name='form-name' value='contact')
 							p.d-none
 								label Ne remplissez pas ceci si vous êtes un humain : #[Input(name='bot-field')]
 							.form-group

@@ -2,8 +2,10 @@
 	ID = "29ba9801-b53d-4c54-a4f2-6b4a8836705e"
 
 [build]
-	publish = "dist"
+	#publish = "dist"
 	command = "yarn build"
+	publish = "dist/client"
+	functions = "dist/server"
 
 [build.environment]
 	GIT_LFS_ENABLED = "true"

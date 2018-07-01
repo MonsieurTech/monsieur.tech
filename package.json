@@ -7,19 +7,22 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "react-static start",
+	"start": "concurrently 'yarn start:client' 'yarn start:server'",
+    "start:client": "react-static start",
+    "start:server": "netlify-lambda serve src/lambda -c webpack.server.js",
     "stage": "react-static build --staging",
-    "build": "react-static build",
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "react-static build",
+    "build:server": "netlify-lambda build src/lambda -c webpack.server.js",
     "serve": "serve dist -p 3000",
-    "deploy": "react-static build && netlifyctl deploy"
+    "deploy": "yarn build && netlifyctl deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "^0.0.20",
-    "babel-plugin-root-import": "^6.0.0",
-    "babel-plugin-transform-react-pug": "^6.0.0",
+    "@sendgrid/mail": "^6.3.1",
     "bootstrap": "^4.1.1",
     "react": "^16.0.0",
     "react-animations": "^1.0.0",
@@ -32,8 +35,12 @@
     "styled-components": "^3.3.0"
   },
   "devDependencies": {
+    "babel-plugin-root-import": "^6.0.0",
+    "babel-plugin-transform-react-pug": "^6.0.0",
+    "dotenv": "^6.0.0",
     "eslint-config-react-tools": "1.x.x",
     "extract-text-webpack-plugin": "^3.0.2",
+    "netlify-lambda": "^0.4.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "serve": "^6.1.0"

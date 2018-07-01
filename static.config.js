@@ -3,6 +3,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { ServerStyleSheet } from 'styled-components'
 
 export default {
+	paths: {
+		dist: 'dist/client'
+	},
 	getSiteData: () => ({
 		title: 'M.TECH',
 		author: 'Baptiste Augrain',
@@ -19,6 +22,16 @@ export default {
 				component: 'src/pages/404'
 			}
 		]
+	},
+	devServer: {
+		proxy: {
+			'/.netlify': {
+				target: 'http://localhost:9000',
+				pathRewrite: {
+					'^/.netlify/functions': ''
+				}
+			}
+		}
 	},
 	renderToHtml: (render, Comp, meta) => {
 		const sheet = new ServerStyleSheet()
