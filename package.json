@@ -1,7 +1,7 @@
 {
   "name": "monsieur.tech",
   "description": "Static website for www.monsieur.tech",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "since": "2018-05-27",
   "author": "Baptiste Augrain <baptiste@monsieur.tech>",
   "private": true,
@@ -44,6 +44,6 @@
     "netlify-lambda": "^0.4.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "serve": "^6.1.0"
+    "serve": "^9.2.0"
   }
 }
