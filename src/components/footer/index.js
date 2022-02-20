@@ -63,7 +63,7 @@ export default class Footer extends React.Component {
 						Container.flex-column.navbar-text
 							img.brand(src=logoImg)
 							
-							.copyright Made with #[FontAwesomeIcon(icon=faHeart)] in France ©2018 #[a(href='/') monsieur.tech]
+							.copyright Made with #[FontAwesomeIcon(icon=faHeart)] in France ©2022 #[a(href='/') monsieur.tech]
 
 							ul
 								NavItem
